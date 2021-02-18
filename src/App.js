@@ -4,7 +4,7 @@ import { Box } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import Footer from "./components/Footer";
 import StayCard from "./components/StayCard";
-import stays from "./stays.json";
+import JSONstays from "./stays.json";
 
 const App = () => {
 	const useStyles = makeStyles({
@@ -111,12 +111,12 @@ const App = () => {
 				</div>
 			</div>
 			<div className={classes.containerTitle}>
-				<h2>Stays in Finland</h2>
-				<p>12+ stays</p>
+				<h2>Stays in {JSONstays.city}</h2>
+				<p>{JSONstays.length} stays</p>
 			</div>
 			<Box display="flex" flexWrap="wrap">
-				{stays.map((stay) => (
-					<StayCard {...stay} />
+				{JSONstays.map((stay, key) => (
+					<StayCard key={key} {...stay} />
 				))}
 			</Box>
 

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Card, CardContent, Button, Typography } from "@material-ui/core";
 import StarIcon from "@material-ui/icons/Star";
 
-const StayCard = ({ title, rating, type, bed, photo }) => {
+const StayCard = ({ title, rating, type, beds, photo, superHost, city }) => {
 	const useStyles = makeStyles({
 		container: {},
 		card: {
@@ -48,7 +48,7 @@ const StayCard = ({ title, rating, type, bed, photo }) => {
 
 	return (
 		<>
-			<Grid container item lg={3} md={3} className={classes.container}>
+			<Grid container item lg={4} md={3} className={classes.container}>
 				<Card className={classes.card}>
 					<img
 						className={classes.image}
@@ -56,14 +56,18 @@ const StayCard = ({ title, rating, type, bed, photo }) => {
 						alt="apartemnt"
 					/>
 					<CardContent className={classes.contentCard}>
-						<Button className={classes.button} variant="outlined">
-							Super Host
-						</Button>
+						{superHost ? (
+							<Button
+								className={classes.button}
+								variant="outlined">
+								Super Host
+							</Button>
+						) : null}
 
 						<span className={classes.type}>
-							{" "}
 							{type}
-							{bed}
+							{" . "}
+							{beds ? beds + " beds" : null}
 						</span>
 
 						<div>
@@ -75,7 +79,7 @@ const StayCard = ({ title, rating, type, bed, photo }) => {
 							{rating}
 						</div>
 					</CardContent>
-					<Typography variant="p">
+					<Typography variant="subtitle1">
 						<span className={classes.titleCard}>{title}</span>
 					</Typography>
 				</Card>
